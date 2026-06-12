@@ -31,7 +31,7 @@ Program ini terdiri dari dua proses terjadwal yang berjalan terus-menerus selama
 
 | Proses | Frekuensi | Fungsi |
 |---|---|---|
-| **Pipeline harian** | Setiap hari pukul **21:00** | Scrape → Scoring → Cover letter → Apply → Laporan |
+| **Pipeline harian** | Setiap hari pukul **10:15** | Scrape → Scoring → Cover letter → Apply → Laporan |
 | **Monitor email** | Setiap **30 menit** (+ saat startup) | Cek balasan Jobstreet via Gmail, update status, notif Telegram |
 
 Semua data lowongan disimpan di database SQLite lokal (`jobs.db`). Notifikasi dikirim ke Telegram.
@@ -41,7 +41,7 @@ Semua data lowongan disimpan di database SQLite lokal (`jobs.db`). Notifikasi di
 ## Arsitektur & Alur Kerja
 
 ```
-21:00 setiap hari
+10:15 setiap hari
    │
    ├─ 1. SCRAPER
    │     Scrape Jobstreet untuk setiap kombinasi POSISI_TARGET × LOKASI.
@@ -287,13 +287,13 @@ Saat dijalankan, program akan:
 1. Menampilkan ringkasan konfigurasi
 2. Validasi `.env` (gagal jika ada yang wajib belum diisi)
 3. Reset status `processing`/`scored` yang menggantung (recovery dari crash)
-4. Jadwalkan pipeline harian (21:00) dan email monitor (tiap 30 menit)
+4. Jadwalkan pipeline harian (10:15) dan email monitor (tiap 30 menit)
 5. Langsung jalankan email monitor sekali (cek inbox saat startup)
 6. Menunggu di loop — program harus tetap berjalan (gunakan `screen`/`tmux`/Task Scheduler agar tidak terhenti)
 
 ### Menjalankan Pipeline Manual (Testing)
 
-Untuk testing tanpa menunggu jam 21:00, edit `main.py` bagian akhir:
+Untuk testing tanpa menunggu jam 10:15, edit `main.py` bagian akhir:
 
 ```python
 # Tambahkan baris ini sebelum loop while
