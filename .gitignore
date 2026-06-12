@@ -1,0 +1,39 @@
+# ── Rahasia / kredensial ─────────────────────────────
+.env
+*.env
+
+# ── Database & log ───────────────────────────────────
+jobs.db
+*.db
+app.log
+*.log
+
+# ── Output yang dihasilkan otomatis ──────────────────
+output/
+*.txt
+*.pdf
+
+# Kecuali README/dokumentasi yang sengaja dibuat
+!README.md
+
+# ── Browser session (sensitif & besar) ───────────────
+output/browser_data/
+output/debug/
+output/cookies/
+output/cv/
+output/cover_letters/
+
+# ── Python ────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+env/
+*.egg-info/
+
+# ── Editor/OS ─────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
