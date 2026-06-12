@@ -144,9 +144,9 @@ def main():
 
     db.reset_status_processing()
 
-    # Pipeline harian — setiap hari pukul 21:00
+    # Pipeline harian — setiap hari pukul 10:15
     schedule.every().day.at("10:15").do(jalankan_pipeline)
-    logger.info("Pipeline harian dijadwalkan pukul 21:00.")
+    logger.info("Pipeline harian dijadwalkan pukul 10:15.")
 
     # Monitor email — setiap 30 menit
     schedule.every(30).minutes.do(cek_email_jobstreet)
